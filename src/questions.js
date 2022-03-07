@@ -252,7 +252,7 @@ const questions = [
     ],
   },
   {
-    question: 'Das Funkgespr ch wird beendet mit dem Wort:',
+    question: 'Das Funkgespräch wird beendet mit dem Wort:',
     answers: [
       { text: 'Verstanden', correct: false },
       {
@@ -486,7 +486,7 @@ const questions = [
     ],
   },
   {
-    question: 'Erh hte Antennenstandorte von Funkgeräten führen zu …',
+    question: 'Erhöhte Antennenstandorte von Funkgeräten führen zu …',
     answers: [
       { text: 'einer größeren Reichweite der Funkverbindung', correct: true },
       {
@@ -547,7 +547,7 @@ const questions = [
       },
       {
         text: 'Einsätze in Tiefgaragen, Krankenhäusern und Industriebauten',
-        correct: false,
+        correct: true,
       },
       {
         text: 'die Überleitung von einer DMO Rufgruppe in eine TMO Rufgruppe',
@@ -929,9 +929,9 @@ const questions = [
     question:
       'Welche Aussage ist hier richtig? DMO Rufgruppen – Schutzzone der Radioastronomie',
     answers: [
-      { text: '', correct: true },
+      { text: 'Rufgruppen mit * = keine Einschränkung', correct: true },
       {
-        text: '',
+        text: 'Rufgruppen ohne * dürfen in der Schutzzone nicht verwendet werden',
         correct: true,
       },
     ],
