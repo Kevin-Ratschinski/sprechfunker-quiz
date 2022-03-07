@@ -6,6 +6,7 @@ const questionNumberElement = document.querySelector('#question-number');
 const answerButtonsElement = document.querySelector('#answer-buttons');
 
 let shuffledQuestions, currentQuestionIndex, questionNumber;
+nextButton.classList.add('hide');
 
 const startQuiz = () => {
   questionNumber = 0;
