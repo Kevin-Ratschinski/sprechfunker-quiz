@@ -2,14 +2,16 @@ const startButton = document.querySelector('#start-btn');
 const nextButton = document.querySelector('#next-btn');
 const questionContainerElement = document.querySelector('#question-container');
 const questionElement = document.querySelector('#question');
+const resultElement = document.querySelector('#result');
 const questionNumberElement = document.querySelector('#question-number');
 const answerButtonsElement = document.querySelector('#answer-buttons');
 
-let shuffledQuestions, currentQuestionIndex, questionNumber;
+let shuffledQuestions, currentQuestionIndex, questionNumber, result;
 nextButton.classList.add('hide');
 
 const startQuiz = () => {
   questionNumber = 0;
+  result = 0;
   startButton.classList.add('hide');
   shuffledQuestions = questions.sort(() => Math.random() - 0.5);
   currentQuestionIndex = 0;
@@ -48,6 +50,7 @@ const displayQuestion = (question) => {
 const resetState = () => {
   clearStatusClass(document.body);
   nextButton.classList.add('hide');
+  resultElement.innerText = '';
   while (answerButtonsElement.firstChild) {
     answerButtonsElement.removeChild(answerButtonsElement.firstChild);
   }
@@ -76,7 +79,9 @@ const chooseAnswer = (e) => {
     });
     if (shuffledQuestions.length > currentQuestionIndex + 1) {
       nextButton.classList.remove('hide');
+      resultElement.innerText = 'Antwort: Falsch';
     } else {
+      resultElement.innerText = `Ende: ${result} von ${questions.length} richtig beantwortet.`;
       startButton.innerText = 'Restart';
       startButton.classList.remove('hide');
     }
@@ -86,9 +91,12 @@ const chooseAnswer = (e) => {
     Array.from(answerButtonsElement.children).forEach((button) => {
       setStatusClass(button, button.dataset.correct);
     });
+    result++;
     if (shuffledQuestions.length > currentQuestionIndex + 1) {
       nextButton.classList.remove('hide');
+      resultElement.innerText = 'Antwort: Richtig';
     } else {
+      resultElement.innerText = `Ende: ${result} von ${questions.length} richtig beantwortet.`;
       startButton.innerText = 'Restart';
       startButton.classList.remove('hide');
     }
