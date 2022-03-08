@@ -507,7 +507,7 @@ const questions = [
     question: 'Die Menüeinstellung „TMO“ im Gerät zeigt an:',
     answers: [
       {
-        text: 'das sich das Ger t im Netzbetrieb (Trunked Mode Operation) befindet',
+        text: 'das sich das Gerät im Netzbetrieb (Trunked Mode Operation) befindet',
         correct: true,
       },
       {
