@@ -57,23 +57,20 @@ const resetState = () => {
 };
 
 const chooseAnswer = (e) => {
+  if (!nextButton.classList.contains('hide')) {
+    return;
+  }
   const selectedButton = e.target;
   const correct = selectedButton.dataset.correct;
-  let correctAnswer = 0;
   let correctAnswersSum = 0;
+  let correctAnswers = 0;
   Array.from(answerButtonsElement.children).forEach((button) => {
     if (button.dataset.correct) {
       correctAnswersSum++;
     }
-    if (button.classList.contains('correct')) {
-      correctAnswer++;
-    }
   });
 
-  if (correct) {
-    setStatusClass(selectedButton, selectedButton.dataset.correct);
-    correctAnswer++;
-  } else {
+  if (!correct) {
     Array.from(answerButtonsElement.children).forEach((button) => {
       setStatusClass(button, button.dataset.correct);
     });
@@ -85,9 +82,18 @@ const chooseAnswer = (e) => {
       startButton.innerText = 'Restart';
       startButton.classList.remove('hide');
     }
+  } else {
+    setStatusClass(selectedButton, selectedButton.dataset.correct);
+    selectedButton.dataset.correctAnswer = true;
   }
 
-  if (correctAnswer === correctAnswersSum) {
+  Array.from(answerButtonsElement.children).forEach((button) => {
+    if (button.dataset.correctAnswer) {
+      correctAnswers++;
+    }
+  });
+
+  if (correctAnswersSum === correctAnswers) {
     Array.from(answerButtonsElement.children).forEach((button) => {
       setStatusClass(button, button.dataset.correct);
     });
@@ -96,7 +102,10 @@ const chooseAnswer = (e) => {
       nextButton.classList.remove('hide');
       resultElement.innerText = 'Antwort: Richtig';
     } else {
-      resultElement.innerText = `Ende: ${result} von ${questions.length} richtig beantwortet.`;
+      let percent = (result / questions.length) * 100;
+      resultElement.innerText = `Ende: ${result} von ${
+        questions.length
+      } (${percent.toFixed(2)}%) richtig beantwortet.`;
       startButton.innerText = 'Restart';
       startButton.classList.remove('hide');
     }
