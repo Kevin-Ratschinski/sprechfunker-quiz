@@ -468,7 +468,7 @@ const questions = [
   },
   {
     question:
-      'Welche Eigenschaften elektromagnetischer Wellen werden ma geblich von der Frequenz beeinflusst?',
+      'Welche Eigenschaften elektromagnetischer Wellen werden maßgeblich von der Frequenz beeinflusst?',
     answers: [
       { text: 'die Wellenlänge', correct: true },
       {
