@@ -656,7 +656,7 @@ const questions = [
   },
   {
     question:
-      'Welche Aussage zur ISSI = Individual Short Subscriver Identity ist richtig?',
+      'Welche Aussage zur ISSI = Individual Short Subscriber Identity ist richtig?',
     answers: [
       { text: 'für jedes Gerät nur eine ISSI', correct: true },
       {
